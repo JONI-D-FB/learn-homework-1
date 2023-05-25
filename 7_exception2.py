@@ -12,13 +12,42 @@
   ValueError и TypeError, если приведение типов не сработало.
     
 """
+stock = [
+		{'name': 'iPhone', 'stock': 24, 'price': 65432.1,
+                'discount': 25},
+		{'name': 'Samsung Galaxy S21', 'stock': 8, 'price': 50000.0,
+                'discount': 10},
+		{'name': '', 'stock': 18, 'price': 10000.0, 'discount': 10}
+]
 
-def discounted(price, discount, max_discount=20)
-    """
-    Замените pass на ваш код
-    """
-    pass
+
+
+def discounted(price, discount, max_discount=20, phone_name=""):
+  try:
+    price = float(abs(price))
+    discount = float(abs(discount))
+    max_discount = int(abs(max_discount))
     
+    if max_discount >= 100:
+      raise ValueError("Слишком большая максимальная скидка")
+    
+    if discount >= max_discount:
+      return price
+    elif "iphone" in phone_name.lower() or not phone_name:
+      return price
+    else:
+      return price - (price * discount / 100)
+  except(TypeError):
+        return("Вы ввели текс вместо числа") 
+        
+ 
+for phone in stock:
+    phone["price_final"] = discounted(
+        phone["price"],
+        phone["discount"],
+        phone_name=phone["name"]
+    )
+   
 if __name__ == "__main__":
     print(discounted(100, 2))
     print(discounted(100, "3"))

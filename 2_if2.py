@@ -15,12 +15,29 @@
 
 """
 
-def main():
+def main(a,b):
     """
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    pass
+    #print('Введи 1-ую строку')
+    #a=input()
+    #print('Введи вторую строку')
+    #b=input()
+
+    if a.isalpha() and b.isalpha():
+       if a==b:
+          return "1"
+       elif a!=b and len(a)>len(b):
+        return "2"
+       elif a!=b and b=="learn":
+          return "3"
+       
+    else:
+       return "0"
     
 if __name__ == "__main__":
-    main()
+    print(main("edae","learn"))
+    print(main("5","learn"))
+    print(main("qweeqwdsqdqe","fuck"))
+    print(main("fuck","fuck"))
